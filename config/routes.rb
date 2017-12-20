@@ -1,25 +1,31 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get '/login' => 'users#login'
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  get '/login_session' =>'users#login_session'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-      get '/' => 'posts#index'
+  get '/logout' => 'users#logout'
 
-      get 'posts/index' # => 'posts#index' 앞에와 네이밍이같으면 생략가능
+  get '/signup' => 'users#signup'
 
-      get '/posts/new'
+  get '/users/register'
 
-      get '/posts/create'
+  get '/' => 'posts#index'
 
-      get 'posts/destroy/:id' => 'posts#destroy'
+  get 'posts/index' # => 'posts#index' 앞에와 네이밍이같으면 생략가능
 
-      get 'posts/edit/:id' => 'posts#edit'
+  get '/posts/new'
 
-      get 'posts/update/:id' => 'posts#update'
+  get '/posts/create'
+
+  get '/posts/show/:id' => 'posts#show'
+
+  get 'posts/destroy/:id' => 'posts#destroy'
+
+  get 'posts/edit/:id' => 'posts#edit'
+
+  get 'posts/update/:id' => 'posts#update'
+
+  get '/posts/:id/add_comment' =>'posts#add_comment'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
+  before_action :authorize
+
   def index
     @posts = Post.all
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -9,8 +15,10 @@ class PostsController < ApplicationController
 
   def create
     Post.create(
+      user_id: current_user.id,
       title: params[:title],
-      content: params[:content]
+      content: params[:content],
+
     )
     redirect_to '/'
   end
@@ -36,5 +44,14 @@ class PostsController < ApplicationController
       content: params[:content]
     )
     redirect_to '/'
+  end
+
+  def add_comment
+    Comment.create(
+      content: params[:content],
+      post_id: params[:id],
+      user_id: current_user.id
+    )
+    redirect_to :back
   end
 end

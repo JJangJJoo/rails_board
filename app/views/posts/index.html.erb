@@ -1,0 +1,42 @@
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">게시판</h1>
+      <p class="lead">WorldOfWarcraft Character</p>
+      <a class="btn btn-primary btn-lg" href='/posts/new' role="button">글쓰기</a>
+    </div>
+  </div>
+<div class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">제목</th>
+        <th scope="col">글쓴이</th>
+        <th scope="col">작성일</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+      <tr>
+        <th scope="row"><%= post.id %></th>
+        <td><a href="/posts/show/<%= post.id %>"><%= post.title %></a></td>
+        <td><%= post.user.email %></td>
+        <td><%= time_ago_in_words(post.created_at)%></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<!-- 삭제logic -->
+<!-- 데이터베이스에서 삭제하고자하는 글을 찾는다. -->
+<!-- 해당글삭제 -->
+
+<!-- 수정로직 -->
+<!-- 데이터베이스에서 우리가 수정하고자하는 글을 찾음 -->
+<!-- 찾은 글을 <form에 보여주고 수정할 내용을 입력받는다. -->
+<!-- 입력받은 내용을 받아 데이터베이스에서 수정한다. -->
